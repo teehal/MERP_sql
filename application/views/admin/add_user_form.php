@@ -1,0 +1,21 @@
+<h2>Add new user</h2>
+<div class="container">
+<form action="<?php echo site_url('users/add_user_to_db'); ?>" method="POST">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input required class="form-control" type="text" name="username" id="username" placeholder="New users username">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input required class="form-control" type="email" name="email" id="email" placeholder="Enter email address">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input required class="form-control" type="password" name="password" id="password" placeholder="Type password">
+    </div>
+    <div class="form-group">
+      <label for="password">Re-type password</label>
+      <input required class="form-control" type="password" name="password" id="password_second" placeholder="REMEMBER TO ADD PASSWORD CHECKING!">
+    </div>
+    <button class="btn btn-primary" type="submit">Add user</button>
+</form>
