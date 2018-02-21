@@ -7,8 +7,9 @@ class Scenario_model extends CI_Model {
     $this->db->query($sql, $insert_data);
   }
 
-  public function delete_scenario() {
-
+  public function delete_scenario($id) {
+    $sql = "DELETE FROM combat_scenario WHERE scenario_id=?";
+    $this->db->query($sql, $id);
   }
 
   public function scenarios() {
@@ -19,6 +20,11 @@ class Scenario_model extends CI_Model {
     else {
     $sql = "SELECT * FROM combat_scenario WHERE owner_id=?";
     return $this->db->query($sql, $_SESSION['user_id']);
+    }
   }
+
+  public function single_scenario($id) {
+    $sql = "SELECT * FROM combat_scenario WHERE scenario_id=?";
+    return $this->db->query($sql, $id)->row();
   }
 }

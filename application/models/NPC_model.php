@@ -22,8 +22,8 @@ class NPC_model extends CI_Model {
     return $result;
   }
 
-  public function insert_scenario_id_to_npc($data){
-    if ( count($data[0]) > 0 ) {
+  public function update_scenario_id_to_npc($data){
+    if ( count($data[1]) > 0 ) {
       $sql = "UPDATE npc SET scenario_id=? WHERE npc_id IN ?";
       $this->db->query($sql, $data);
     }
