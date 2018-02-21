@@ -13,6 +13,7 @@
 
 .user_table {
   margin-left: 1rem;
+  text-align: center;
 }
 
 .top_buttons {
@@ -125,6 +126,10 @@ select.custom-select {
 /*  margin-left: 25rem; */
 }
 
+.scenario {
+  height: 125px;
+}
+
 .small_armor {
   padding-top: 0.5rem;
   padding-bottom: 0.25rem;
@@ -150,6 +155,11 @@ select.custom-select {
   margin-top: 1rem;
 }
 
+.background_cell {
+  height: 75px;
+  width: 480px;
+  overflow: auto;
+}
 .tiny_button {
   height: 1.8rem;
   width: 2rem;

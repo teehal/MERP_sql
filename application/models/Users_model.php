@@ -4,8 +4,11 @@ class Users_model extends CI_Model {
   public function delete_user($user_id) {
     $sql_first = "DELETE FROM npc WHERE owner_id=?";
     $sql_second = "DELETE FROM user WHERE user_id=?";
+    $sql_third = "SELECT username FROM user WHERE user_id=?";
+    $name = $this->db->query($sql_third,$user_id)->row()->username;
     $this->db->query($sql_first, $user_id);
     $this->db->query($sql_second, $user_id);
+    return $name;
   }
 
   public function insert_user_to_db($insert_data) {

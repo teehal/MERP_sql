@@ -11,7 +11,7 @@ class Users extends CI_Controller {
       redirect('login/index');
     }
 	}
-  
+
   public function add_user_form() {
     $data['page'] = 'admin/add_user_form';
     $this->load->view('admin/content', $data);
@@ -45,7 +45,7 @@ class Users extends CI_Controller {
 
   public function delete_user($user_id) {
     $this->load->model('Users_model');
-    $this->Users_model->delete_user($user_id);
+    $data['name'] = $this->Users_model->delete_user($user_id);
     $data['page'] = 'user/user_deleted';
     $this->load->view('admin/content', $data);
   }

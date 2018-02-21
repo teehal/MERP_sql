@@ -19,6 +19,9 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('users/recent_activity') ?>">Recent activity</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('Login/log_out') ?>">Log out</a>
+      </li>
     </ul>
   </div>
 </nav>

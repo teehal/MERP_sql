@@ -6,6 +6,9 @@
         <a class="nav-link" href="<?php echo site_url('NPC/browse_npcs');?>">Own NPCs</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('Scenario/scenarios');?>">Own scenarios</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('NPC/npc_editor');?>">Editor</a>
       </li>
       <li class="nav-item">
@@ -15,7 +18,10 @@
         <a class="nav-link" href="<?php echo site_url('NPC/create_new_npc');?>">Create new NPC</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Other</a>
+        <a class="nav-link" href="<?php echo site_url('Scenario/create_new_scenario');?>">Create new scenario</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('Login/log_out')?>">Log out</a>
       </li>
     </ul>
   </div>

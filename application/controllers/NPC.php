@@ -25,14 +25,31 @@ class NPC extends CI_Controller {
 
   public function add_npc_to_db() {
     $this->load->model('NPC_model');
+    $small_armor = array(0, 0, 0, 0);
+    $npc_armor = $this->input->post('add_armor');
+
+    if ( count($npc_armor) > 0) {
+      foreach ($npc_armor as $index)
+        $small_armor[$index] = 1;
+    }
     $insert_data = array(
       $this->input->post('name'),
       $this->input->post('class'),
       $this->input->post('level'),
       $this->input->post('race'),
+      $this->input->post('primary_weapon'),
+      $this->input->post('secondary_weapon'),
+      $this->input->post('armor'),
+      $this->input->post('def_bon'),
+      $this->input->post('hp'),
+      $this->input->post('ob_pri'),
+      $this->input->post('ob_sec'),
+      $small_armor[0],
+      $small_armor[1],
+      $small_armor[2],
+      $small_armor[3],
       $this->input->post('background'),
-      $_SESSION['user_id'],
-      'Nothing assigned yet.',
+      $_SESSION['user_id']
     );
     $result = $this->NPC_model->insert_npc_to_db($insert_data);
 
