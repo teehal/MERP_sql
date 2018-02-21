@@ -1,4 +1,3 @@
-
 function viewModel() {
     this.create_new = ko.observable(false);
     this.NPClist = ko.observableArray();

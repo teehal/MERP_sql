@@ -1,4 +1,4 @@
-<h2> Administrator tools </h2>
+<h2 class="custom_header"> Administrator tools </h2>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
   <a class="navbar-brand" href="#">Admin</a>

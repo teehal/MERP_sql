@@ -13,13 +13,16 @@
   <tbody>
 <?php
   foreach ($users as $row ) {
+    $action_row = $row['user_id'] == $_SESSION['user_id'] ?
+      '<button disabled class="btn btn-danger"">Remove</button>' :
+      '<a href='.site_url('users/confirm_delete/').$row['user_id'].'>
+      <button class="btn btn-danger"">Remove</button></a>';
     echo '<tr class="user_cell">';
     echo '<td class="user_cell">'.$row['username'].'</td>';
     echo '<td class="user_cell">'.$row['email'].'</td>';
     echo '<td class="user_cell">'.$row['password'].'</td>';
     echo '<td class="user_cell">0</td>';
-    echo '<td class="user_cell">
-      <button class="btn btn-danger"">Remove</button></td>';
+    echo '<td class="user_cell">'.$action_row.'</td>';
     echo '</tr>';
   }?>
   </tbody>

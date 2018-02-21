@@ -1,15 +1,15 @@
 <?php
 class Login extends CI_Controller {
 
-  public function view($page = 'login'){
-
-    if ( !file_exists(APPPATH.'views/login/'.$page.'.php') )
-      show_404();
-
-    $data['title'] = ucfirst($page);
+  // public function view($page = 'login'){
+  //
+  //   if ( !file_exists(APPPATH.'views/login/'.$page.'.php') )
+  //     show_404();
+  public function index() {
+    $data['title'] = 'Hello';//ucfirst($page);
 
     $this->load->view('templates/header', $data);
-    $this->load->view('login/'.$page, $data);
+    $this->load->view('login/login', $data);
     $this->load->view('templates/footer', $data);
   }
 

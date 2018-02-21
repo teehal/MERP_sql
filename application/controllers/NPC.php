@@ -12,6 +12,16 @@ class NPC extends CI_Controller {
     $data['user'] = 'regular_user';
     $this->load->view('user/content', $data);
   } */
+  function __construct()
+	{
+		parent::__construct();
+		if(isset($_SESSION['logged_in'])){
+      //we dont' do anything
+    }
+    else {
+      redirect('login/index');
+    }
+	}
 
   public function add_npc_to_db() {
     $this->load->model('NPC_model');
