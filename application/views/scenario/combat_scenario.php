@@ -34,23 +34,23 @@
           <b>DB: </b><span data-bind="text: NPCDefBon"></span><span data-bind="if: NPC_shield"><span data-bind="text: ' (shield) / ' + ( NPCDefBon() - 25)"></span></span>
         </div>
       <div>
-        <input type="number" min=0 max=1000 class="lvl" data-bind="attr:{ id: 'penalty' + NPCnumber }"><button type="button" class="btn btn-secondary" data-bind="click:$parent.Penalize, ">Penalty</button>
+        <input type="number" min=0 max=1000 class="lvl" data-bind="attr:{ id: 'penalty' + NPCnumber }"><button type="button" class="btn btn-primary btn-sm" data-bind="click:$parent.Penalize, ">Penalty</button>
       </div>
       <div>
-        <input type="number" min=0 max=1000 class="lvl" data-bind="attr:{ id: 'defence' + NPCnumber }"><button type="button" class="btn btn-secondary" data-bind="click: $parent.Defend">Defence</button>
+        <input type="number" min=0 max=1000 class="lvl" data-bind="attr:{ id: 'defence' + NPCnumber }"><button type="button" class="btn btn-primary btn-sm" data-bind="click: $parent.Defend">Defence</button>
       </div>
     </td>
     <td>
       <div>
         <b>HP: </b><span data-bind="text: NPChp"></span> / <span data-bind="text: NPChp_orig"></span>
       </div>
-      <div>
+      <div class="damage_button">
         <input type="number" min=0 class="lvl" data-bind="attr:{ id: 'damage' + NPCnumber }">
-        <button type="button" class="btn btn-secondary" data-bind="click:$parent.Damage">Damage</button>
+        <button type="button" class="btn btn-primary btn-sm" data-bind="click:$parent.Damage">Damage</button>
       </div>
       <div>
         <input type="number" min=0 class="lvl" data-bind="attr:{ id: 'heal' + NPCnumber }">
-        <button type="button" class="btn btn-secondary" data-bind="click:$parent.Heal">Heal</button>
+        <button type="button" class="btn btn-primary btn-sm" data-bind="click:$parent.Heal">Heal</button>
       </div>
     </td>
   </tr>
