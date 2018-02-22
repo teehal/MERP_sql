@@ -1,6 +1,6 @@
 <h2 class="custom_header">NPCs</h2>
 
-<table class="table-striped table-bordered table-hover user_table">
+<table class="table-striped table-bordered table-hover user_table centered">
   <thead>
   <tr>
     <th class="table_header">Name</th>

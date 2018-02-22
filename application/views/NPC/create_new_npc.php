@@ -1,7 +1,8 @@
+<h2 class="custom_header">Create new NPC</h2>
 <form action="<?php echo site_url('NPC/add_npc_to_db');?>" method="POST">
 <div class="container-fluid">
 <div class="row">
-<div class="col-6">
+<div class="col-7">
 <div class="npc_selectors">
     <select class="custom-select" name="class" id="npcclass" data-bind="options: AvailableClasses, value:char_class, optionsCaption: 'NPC Class' "></select>
     <select class="custom-select" name="race" id="npcrace" data-bind="options: AvailableRaces, optionsCaption: 'NPC Race', enable: char_class(), value:char_race" ></select>
@@ -33,12 +34,12 @@
       <input class="lvl extra" name="add_armor[]" value=3 type="checkbox" id="aarmor">Arm Armor
   </div>
 </div>
-<div class="col-3">
+<div class="col-4">
   <div class="input-group background">
     <div class="input-group-prepend">
       <span class="input-group-text">Background</span>
     </div>
-    <textarea class="form-control" name="background" value="Nothing here yet!"></textarea>
+    <textarea class="form-control background" name="background" value="Nothing here yet!"></textarea>
   </div>
 </div>
 </div>

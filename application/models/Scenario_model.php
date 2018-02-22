@@ -1,6 +1,20 @@
 <?php
 class Scenario_model extends CI_Model {
 
+  public function all_scenarios() {
+    if ($_SESSION['is_admin'] == 1) {
+      $sql = "SELECT user.username, combat_scenario.scenario_id, scenario_name, description
+        FROM combat_scenario INNER JOIN user ON combat_scenario.owner_id = user.user_id";
+      return $this->db->query($sql);
+    }
+    else {
+      $sql = "SELECT * FROM (SELECT user.username, user.user_id, combat_scenario.scenario_id, scenario_name, description
+        FROM combat_scenario INNER JOIN user ON combat_scenario.owner_id = user.user_id) AS abc
+        WHERE abc.user_id=?";
+      return $this->db->query($sql, $_SESSION['user_id']);
+    }
+  }
+
   public function insert_scenario_to_db($insert_data) {
     $sql = "INSERT INTO combat_scenario(scenario_name, description,
       owner_id) VALUES (?, ?, ?)";
@@ -33,5 +47,10 @@ class Scenario_model extends CI_Model {
   public function single_scenario($id) {
     $sql = "SELECT * FROM combat_scenario WHERE scenario_id=?";
     return $this->db->query($sql, $id)->row();
+  }
+
+  public function update_scenario_in_db($data) {
+    $sql = "UPDATE combat_scenario SET scenario_name=?, description=? WHERE scenario_id=?";
+    $this->db->query($sql, $data);
   }
 }

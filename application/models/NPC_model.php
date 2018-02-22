@@ -29,6 +29,26 @@ class NPC_model extends CI_Model {
     }
   }
 
+  public function update_scenario_id_after_edit($data) {
+    //print_r($data['ids_after_edit']);
+    $id_removed = array();
+    if ( count($data['npc_ids']) > 0 ) {
+      foreach ($data['npc_ids'] as $id) {
+        if ( !in_array( $id['npc_id'], $data['ids_after_edit']) )
+          $id_removed[] = $id['npc_id'];
+      }
+    }
+    if ( count($id_removed) > 0 ) {
+      $sql = "UPDATE npc SET scenario_id=? WHERE npc_id IN ?";
+      print_r($id_removed);
+      $this->db->query($sql, array(null,$id_removed));
+    }
+    if ( count($data['ids_after_edit']) > 0 ) {
+    $sql = "UPDATE npc SET scenario_id=? WHERE npc_id IN ?";
+    $this->db->query($sql, array($data['scenario_id'], $data['ids_after_edit']));
+    }
+  }
+
   public function npcs() {
 
     //$this->db->db_debug = false;
@@ -57,7 +77,7 @@ class NPC_model extends CI_Model {
     $sql = "SELECT * FROM npc WHERE owner_id=?";
     return $this->db->query($sql, $_SESSION['user_id']);
   }
-  
+
   public function npcs_for_scenario($id) {
     $sql = "SELECT * FROM npc WHERE scenario_id=?";
     return $this->db->query($sql, $id);

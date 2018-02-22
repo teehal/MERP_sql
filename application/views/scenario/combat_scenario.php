@@ -1,6 +1,6 @@
 <h2 class="custom_header">Combat Helper</h2>
 <h3 class="custom_header"><i><?php echo $scenario_info->scenario_name?></i></h3>
-<div class="description_scroll"><?php echo $scenario_info->description?></i></div>
+<div class="description_scroll"><?php echo $scenario_info->description?></div>
 
   <table class="table table-striped">
   <tbody  data-bind="foreach: NPClist">

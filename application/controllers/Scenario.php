@@ -57,8 +57,8 @@ class Scenario extends CI_Controller {
   public function edit_combat_scenario($id) {
     $this->load->model('Scenario_model');
     $this->load->model('NPC_model');
-    $data['scenario_info'] = $this->single_scenario($id);
-    $data['npcs'] = $this->npcs_for_new_scenario();
+    $data['scenario_info'] = $this->Scenario_model->single_scenario($id);
+    $data['npcs'] = $this->NPC_model->npcs_for_new_scenario()->result_array();
     $data['page'] = 'scenario/edit_scenario_form';
     $this->load->view('user/content', $data);
   }
@@ -73,7 +73,26 @@ class Scenario extends CI_Controller {
   public function scenarios() {
     $this->load->model('Scenario_model');
     $data['scenarios'] = $this->Scenario_model->scenarios()->result_array();
+    $data['all_scenarios'] = $this->Scenario_model->all_scenarios()->result_array();
     $data['page'] = 'scenario/browse_scenarios_as_'.$_SESSION['user_url'];
     $this->load->view($_SESSION['user_url'].'/content', $data);
+  }
+
+  public function update_scenario_to_db($id) {
+    $this->load->model('Scenario_model');
+    $this->load->model('NPC_model');
+    $data['npc_ids'] = $this->NPC_model->npcs_for_scenario($id)->result_array();
+    $data['scenario_id'] = $id;
+    $data['ids_after_edit'] = $this->input->post('npc_id');
+    $update_data = array(
+      $this->input->post('scenario_name'),
+      $this->input->post('description'),
+      $id
+    );
+    $this->Scenario_model->update_scenario_in_db($update_data);
+    $this->NPC_model->update_scenario_id_after_edit($data);
+    $data['page'] = 'scenario/scenario_updated';
+    $this->load->view('user/content', $data);
+
   }
 }
