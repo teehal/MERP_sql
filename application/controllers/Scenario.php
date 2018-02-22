@@ -1,6 +1,17 @@
 <?php
 class Scenario extends CI_Controller {
 
+  function __construct()
+	{
+		parent::__construct();
+		if(isset($_SESSION['logged_in'])){
+      //we dont' do anything
+    }
+    else {
+      redirect('login/index');
+    }
+	}
+
   public function add_new_scenario_to_db() {
     $this->load->model('Scenario_model');
     $this->load->model('NPC_model');
@@ -20,6 +31,14 @@ class Scenario extends CI_Controller {
     $this->load->view('user/content', $data);
   }
 
+  public function combat_scenario($id) {
+    $this->load->model('NPC_model');
+    $this->load->model('Scenario_model');
+    $data['npcs'] = $this->NPC_model->npcs_for_scenario($id)->result_array();
+    $data['scenario_info'] = $this->Scenario_model->single_scenario($id);
+    $data['page'] = 'scenario/combat_scenario';
+    $this->load->view('user/content', $data);
+  }
   public function confirm_delete_scenario($scenario_id) {
     $this->load->model('Scenario_model');
     $data['scenario'] = $this->Scenario_model->single_scenario($scenario_id);
@@ -29,21 +48,24 @@ class Scenario extends CI_Controller {
 
   public function delete_scenario($id) {
     $this->load->model('Scenario_model');
-    $this->load->model('NPC_model');
     $owner = $this->Scenario_model->single_scenario($id)->owner_id;
     $this->Scenario_model->delete_scenario($id);
-    $data = array(
-      $id,
-      array($owner)
-    );
     $data['page'] = 'scenario/scenario_deleted';
-    $this->load->view($_SESSION.'/content', $data);
-  //  $this->NPC_model->update_scenario_id_to_npc($data);
+    $this->load->view($_SESSION['user_url'].'/content', $data);
+  }
+
+  public function edit_combat_scenario($id) {
+    $this->load->model('Scenario_model');
+    $this->load->model('NPC_model');
+    $data['scenario_info'] = $this->single_scenario($id);
+    $data['npcs'] = $this->npcs_for_new_scenario();
+    $data['page'] = 'scenario/edit_scenario_form';
+    $this->load->view('user/content', $data);
   }
 
   public function create_new_scenario(){
     $this->load->model('NPC_model');
-    $data['npcs'] = $this->NPC_model->npcs()->result_array();
+    $data['npcs'] = $this->NPC_model->npcs_for_new_scenario()->result_array();
     $data['page'] = 'scenario/create_new_scenario_form';
     $this->load->view('user/content', $data);
   }

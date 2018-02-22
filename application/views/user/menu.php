@@ -9,12 +9,6 @@
         <a class="nav-link" href="<?php echo site_url('Scenario/scenarios');?>">Own scenarios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('NPC/npc_editor');?>">Editor</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('NPC/combat_helper');?>">Combat helper</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('NPC/create_new_npc');?>">Create new NPC</a>
       </li>
       <li class="nav-item">

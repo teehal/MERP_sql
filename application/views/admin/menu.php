@@ -17,7 +17,7 @@
         <a class="nav-link" href="<?php echo site_url('users/list_users') ?>">Browse users</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('users/recent_activity') ?>">Recent activity</a>
+        <a class="nav-link" href="<?php echo site_url('Scenario/scenarios') ?>">Browse scenarios</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo site_url('Login/log_out') ?>">Log out</a>

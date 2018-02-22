@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
       <label for="password">Re-type password</label>
-      <input data-bind="textInput: passwordTwo" required class="form-control" type="password" name="password_two" id="password_second" placeholder="REMEMBER TO ADD PASSWORD CHECKING!">
+      <input data-bind="textInput: passwordTwo" required class="form-control" type="password" name="password_two" id="password_second" placeholder="Re-type password">
     </div>
     <button data-bind="enable: passwordOne() == passwordTwo() && passwordOne" class="btn btn-primary" type="submit">Add user</button>
 </form>

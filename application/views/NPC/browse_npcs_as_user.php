@@ -22,10 +22,12 @@
     echo '<td class="user_cell">'.$row['race'].'</td>';
     echo '<td class="user_cell">'.$row['level'].'</td>';
     echo '<td class="user_cell"><div class="background_cell">'.$row['background'].'</div></td>';
-    echo '<td class="user_cell">'.$row['scenario_id'].'</td>';
+    echo '<td class="user_cell">'.$row['scenario_name'].'</td>';
     echo '<td class="user_cell">
       <a href="'.site_url('NPC/confirm_delete_npc/').$row['npc_id'].'"
-      <button class="btn btn-danger"">Remove</button></td>';
+      <button class="btn btn-danger"">Remove</button>
+      <a href="'.site_url('NPC/edit_npc/').$row['npc_id'].'"
+      <button class="btn btn-primary edit"">Edit</button></td>';
     echo '</tr>';
   }
 }

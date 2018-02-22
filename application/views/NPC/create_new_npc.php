@@ -33,27 +33,6 @@
       <input class="lvl extra" name="add_armor[]" value=3 type="checkbox" id="aarmor">Arm Armor
   </div>
 </div>
-<div class="col-2">
-  <div class="skill_list">
-    <table class="table-striped">
-    <tbody data-bind="foreach: NPCSkills">
-    <tr>
-      <td>
-        <label class="lbl_npc"  data-bind="text: SkillName"></label>
-      </td>
-      <td>
-        <input class="lvl" type="number" data-bind="value: SkillBonus">
-      </td>
-      <td>
-        <button class="tiny_button" data-bind="click: $parent.RemoveSkill">X</button>
-    </tr>
-  </tbody>
-  </table>
-  </div>
-  <input id="skill_name" class="lvl skill" type="text" placeholder="Skill name">
-  <input id="skill_bonus" class="lvl" type="number">
-  <button type="button" class="btn btn-primary btn-sm add" data-bind="click: AddSkill">Add</button>
-</div>
 <div class="col-3">
   <div class="input-group background">
     <div class="input-group-prepend">
@@ -68,5 +47,5 @@
 </form>
 <script type="text/javascript">
     ko.options.deferUpdates = true;
-    ko.applyBindings( new viewModel() );
+    ko.applyBindings( new CreateNewNpcViewModel() );
 </script>

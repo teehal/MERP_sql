@@ -14,11 +14,18 @@ class Scenario_model extends CI_Model {
 
   public function scenarios() {
     if ($_SESSION['is_admin'] == 1) {
-      $sql = "SELECT * FROM combat_scenario";
+      $sql = "SELECT scenario_name,user.username, description, combat_scenario.scenario_id,
+        GROUP_CONCAT(name) AS npcs FROM combat_scenario INNER JOIN (npc,user) ON (npc.scenario_id =
+        combat_scenario.scenario_id AND user.user_id = npc.owner_id) GROUP BY
+        scenario_name,user.username, description, combat_scenario.scenario_id";
       return $this->db->query($sql);
     }
     else {
-    $sql = "SELECT * FROM combat_scenario WHERE owner_id=?";
+    $sql = "SELECT * FROM (SELECT scenario_name,npc.owner_id, description,
+      combat_scenario.scenario_id, GROUP_CONCAT(name) AS npcs
+      FROM combat_scenario INNER JOIN npc ON npc.scenario_id = combat_scenario.scenario_id
+      GROUP BY scenario_name,npc.owner_id, description, combat_scenario.scenario_id) AS abc
+      WHERE abc.owner_id=?";
     return $this->db->query($sql, $_SESSION['user_id']);
     }
   }

@@ -88,6 +88,14 @@ class NPC extends CI_Controller {
     $this->load->view($_SESSION['user_url'].'/content', $data);
   }
 
+  public function edit_npc($id) {
+    $this->load->model('NPC_model');
+    $data['npc'] = $this->NPC_model->chosen_npc($id);
+    $data['page'] = 'NPC/edit_npc';
+    $data['npc_id'] = $id;
+    $this->load->view('user/content', $data);
+  }
+
   public function npc_editor() {
     $data['page'] = 'NPC/npc_editor';
     $user_url = $_SESSION['user'] == 'admin' ? 'admin' : 'user';
@@ -96,6 +104,12 @@ class NPC extends CI_Controller {
 
   public function combat_helper() {
     $data['page'] = 'NPC/combat_helper';
+    $this->load->view('user/content', $data);
+  }
+
+  public function update_npc_to_db($id) {
+    $data['page'] = 'NPC/npc_updated_to_db';
+    $data['id'] = $id;
     $this->load->view('user/content', $data);
   }
 
