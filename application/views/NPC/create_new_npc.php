@@ -29,7 +29,7 @@
     <label class="lbl_npc" for="npcname">Name</label>
       <input class="lvl name" name="name" type="text" value="noname1" id="npcname">
       <label class="lbl_npc" for="npcofb_sec"><b>OB</b></label>
-      <input class="lvl" name="ob_sec" type="number" id="npcofb_sec" value=0 min=-200 max=200 data-bind="enable: char_2stw() , value: char_2stw() ? char_ob_sec : ''"><span> Secondary</span>
+      <input class="lvl" name="ob_sec" type="number" id="npcofb_sec" value=0 min=-200 max=200 data-bind="enable: char_1stw(), value: char_1stw() ? char_ob_sec : ''"><span> Secondary</span>
       <input class="lvl extra" name="add_armor[]" value=2 type="checkbox" id="larmor">Leg Armor
       <input class="lvl extra" name="add_armor[]" value=3 type="checkbox" id="aarmor">Arm Armor
   </div>
